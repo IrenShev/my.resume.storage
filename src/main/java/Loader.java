@@ -6,6 +6,8 @@ import java.io.InputStreamReader;
 
 public class Loader {
     private final static ResumeStorage ARRAY_STORAGE = new ResumeStorage();
+    private static  long TIMEOUT;
+
 
     public static void main(String[] args) throws IOException {
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
@@ -23,29 +25,37 @@ public class Loader {
             }
             switch (params[0]) {
                 case "list":
+                    TIMEOUT = System.nanoTime();
                     printAll();
                     break;
                 case "size":
+                    TIMEOUT = System.nanoTime();
                     System.out.println(ARRAY_STORAGE.size());
+                    System.out.println("----command done at " + (System.nanoTime() - TIMEOUT) + " Nanos----");
                     break;
                 case "save":
+                    TIMEOUT = System.nanoTime();
                     r = new Resume(uuid);
                     ARRAY_STORAGE.save(r);
                     printAll();
                     break;
                 case "update":
+                    TIMEOUT = System.nanoTime();
                     r = new Resume(uuid);
                     ARRAY_STORAGE.update(r);
                     printAll();
                     break;
                 case "delete":
+                    TIMEOUT = System.nanoTime();
                     ARRAY_STORAGE.delete(uuid);
                     printAll();
                     break;
                 case "get":
+                    TIMEOUT = System.nanoTime();
                     System.out.println(ARRAY_STORAGE.get(uuid));
                     break;
                 case "clear":
+                    TIMEOUT = System.nanoTime();
                     ARRAY_STORAGE.clear();
                     printAll();
                     break;
@@ -60,7 +70,7 @@ public class Loader {
 
     static void printAll() {
         Resume[] all = ARRAY_STORAGE.getAll();
-        System.out.println("----------------------------");
+        System.out.println("-----------------------------------------");
         if (all.length == 0) {
             System.out.println("Empty");
         } else {
@@ -68,6 +78,6 @@ public class Loader {
                 System.out.println(r);
             }
         }
-        System.out.println("----------------------------");
+        System.out.println("----command done at " + (System.nanoTime() - TIMEOUT) + " Nanos----");
     }
 }
