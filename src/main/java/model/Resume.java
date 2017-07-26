@@ -1,3 +1,5 @@
+package model;
+
 public class Resume {
     //unique identifier
     private String uuid;
