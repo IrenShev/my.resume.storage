@@ -3,7 +3,6 @@ package storage;
 import model.Resume;
 
 public abstract class AbstractStorage implements Storage {
-    //шаблонный метод
     public static final int MAX_LENTH = 10000;
     protected Resume[] storage = new Resume[MAX_LENTH];
     protected int size = 0;
@@ -91,7 +90,6 @@ public abstract class AbstractStorage implements Storage {
         size = 0;
 
     }
-    // set class abstract
     protected abstract int getIndex(String uuid);
 
     protected abstract void fillDeletedEl(int index);

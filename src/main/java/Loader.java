@@ -1,4 +1,5 @@
 import model.Resume;
+import storage.ManualSortedStorage;
 import storage.ResumeStorage;
 import storage.SortedResumeStorage;
 import storage.Storage;
@@ -9,7 +10,8 @@ import java.io.InputStreamReader;
 
 public class Loader {
     //private final static Storage ARRAY_STORAGE = new ResumeStorage();
-    private final static Storage ARRAY_STORAGE = new SortedResumeStorage();
+    //private final static Storage ARRAY_STORAGE = new SortedResumeStorage();
+    private final static Storage ARRAY_STORAGE = new ManualSortedStorage();
     private static  long TIMEOUT;
 
 
