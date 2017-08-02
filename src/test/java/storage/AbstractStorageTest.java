@@ -1,5 +1,8 @@
 package storage;
 
+import exception.ExistStorageException;
+import exception.NotExistStorageException;
+import exception.StorageException;
 import model.Resume;
 
 import org.junit.Assert;
@@ -32,12 +35,28 @@ public abstract class AbstractStorageTest {
     }
 
 
+
+
     @Before
     public void setUp() {
         storage.clear();
         storage.save(RESUME_1);
         storage.save(RESUME_2);
         storage.save(RESUME_3);
+    }
+
+
+    @Test(expected = StorageException.class)
+    public void saveOverflow() throws Exception {
+        try {
+            for (int i = 4; i <= AbstractStorage.MAX_LENTH; i++) {
+                storage.save(new Resume("" + i)); //вот тут 1 раз всплывает почему пустой конструктор это плохо, да и сеттер тоже
+                // мы ловим  nullPointerException  в вызове компоратора, при создании нового пустого резюме
+            }
+        } catch (StorageException e) {
+            Assert.fail();
+        }
+        storage.save(new Resume("dummy" ));
     }
 
     @Test
@@ -47,12 +66,7 @@ public abstract class AbstractStorageTest {
         assertArrayEquals(storage.getAll(), new Resume[]{RESUME_1,RESUME_2,RESUME_3,RESUME_4});
     }
 
-    @Test
-    public void delete() {
-        storage.delete(UUID_3);
-        assertSize(2);
-        assertArrayEquals(storage.getAll(), new Resume[]{RESUME_1,RESUME_2});
-    }
+
 
     @Test
     public void update() {
@@ -83,6 +97,29 @@ public abstract class AbstractStorageTest {
         storage.clear();
         assertSize(0);
     }
+
+    @Test(expected = NotExistStorageException.class)
+    public void delete() throws Exception {
+        storage.delete(UUID_1);
+        assertSize(2);
+        storage.get(UUID_1);
+    }
+
+    @Test(expected = NotExistStorageException.class)
+    public void getNotExist() throws Exception {
+        storage.get("dummy");
+    }
+
+    @Test(expected = ExistStorageException.class)
+    public void saveExist() throws Exception {
+        storage.save(RESUME_1);
+    }
+
+    @Test(expected = NotExistStorageException.class)
+    public void updateNotExist() throws Exception {
+        storage.get("dummy");
+    }
+
 
     private void assertSize(int size){
         assertEquals(storage.size(), size);

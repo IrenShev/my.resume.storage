@@ -1,5 +1,8 @@
 package storage;
 
+import exception.ExistStorageException;
+import exception.NotExistStorageException;
+import exception.StorageException;
 import model.Resume;
 
 public abstract class AbstractStorage implements Storage {
@@ -25,8 +28,7 @@ public abstract class AbstractStorage implements Storage {
     @Override
     public void save(Resume r) {
         if (isOverflow()) {
-            System.out.println("Storage overflow!");
-            return;
+            throw new StorageException("Storage owerflov!",r.getUuid());
         }
         int index = getIndex(r.getUuid());
         if (!isExist(index)) {
@@ -34,7 +36,7 @@ public abstract class AbstractStorage implements Storage {
             size++;
             return;
         }
-        System.out.println("Sorry! but resume whith uuid " + r.getUuid() + " already exist!");
+        throw new ExistStorageException(r.getUuid());
     }
 
     @Override
@@ -45,7 +47,7 @@ public abstract class AbstractStorage implements Storage {
             size--;
             return;
         }
-        System.out.println("Sorry! but resume whith uuid " + uuid + " is absent!");
+        throw new NotExistStorageException(uuid);
     }
 
     @Override
@@ -55,7 +57,7 @@ public abstract class AbstractStorage implements Storage {
             storage[index] = r;
             return;
         }
-        System.out.println("Sorry! but resume whith uuid " + r.getUuid() + " is absent!");
+        throw new NotExistStorageException(r.getUuid());
     }
 
     @Override
@@ -64,8 +66,7 @@ public abstract class AbstractStorage implements Storage {
         if (isExist(index)) {
             return storage[index];
         }
-        System.out.println("Sorry! but resume whith uuid " + uuid + " is absent!");
-        return null;
+        throw new NotExistStorageException(uuid);
     }
 
     @Override
