@@ -50,8 +50,7 @@ public abstract class AbstractStorageTest {
     public void saveOverflow() throws Exception {
         try {
             for (int i = 4; i <= AbstractStorage.MAX_LENTH; i++) {
-                storage.save(new Resume("" + i)); //вот тут 1 раз всплывает почему пустой конструктор это плохо, да и сеттер тоже
-                // мы ловим  nullPointerException  в вызове компоратора, при создании нового пустого резюме
+                storage.save(new Resume("" + i));
             }
         } catch (StorageException e) {
             Assert.fail();
