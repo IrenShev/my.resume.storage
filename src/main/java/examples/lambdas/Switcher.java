@@ -9,8 +9,13 @@ public class Switcher {
     private List<ElectrisityConsumer> consumers;
 
     public Switcher(ElectrisityConsumer ... consumers){
-        this.consumers = Arrays.asList(consumers);
+        this(Arrays.asList(consumers));  //теперь так нельзя
+        this.consumers = new ArrayList<>();
+        for (ElectrisityConsumer ec: consumers) {
+            this.consumers.add(ec);
+        }
     }
+
     public Switcher(List<ElectrisityConsumer> consumers) {
         this.consumers = consumers;
     }
