@@ -6,12 +6,10 @@ public class Loader {
         Lamp lamp = new Lamp();
         Radio radio = new Radio();
         Switcher sw = new Switcher(lamp,radio);
-        sw.addElListener(new ElectrisityConsumer() {
-            @Override
-            public void electicityOn() {
+        sw.addElListener(() -> {
                 System.out.println("Холодильник делает холод!");
-            }
         });
+
 
         sw.switchOn();
     }
