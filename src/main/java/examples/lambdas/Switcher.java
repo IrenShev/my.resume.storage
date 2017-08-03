@@ -6,7 +6,7 @@ import java.util.Arrays;
 import java.util.List;
 
 public class Switcher {
-    List<ElectrisityConsumer> consumers;
+    private List<ElectrisityConsumer> consumers;
 
     public Switcher(ElectrisityConsumer ... consumers){
         this.consumers = Arrays.asList(consumers);
