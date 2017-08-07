@@ -19,7 +19,8 @@ import static org.junit.Assert.assertTrue;
 
 public abstract class AbstractStorageTest {
 
-    private Storage storage;
+    //change to protected
+    protected Storage storage;
 
     private static final String UUID_1 = "uuid1";
     private static final Resume RESUME_1 = new Resume(UUID_1);
@@ -37,28 +38,12 @@ public abstract class AbstractStorageTest {
         this.storage = storage;
     }
 
-
-
-
     @Before
     public void setUp() {
         storage.clear();
         storage.save(RESUME_1);
         storage.save(RESUME_2);
         storage.save(RESUME_3);
-    }
-
-
-    @Test(expected = StorageException.class)
-    public void saveOverflow() throws Exception {
-        try {
-            for (int i = 4; i <= AbstractArrayStorage.MAX_LENTH; i++) {
-                storage.save(new Resume("" + i));
-            }
-        } catch (StorageException e) {
-            Assert.fail();
-        }
-        storage.save(new Resume("dummy" ));
     }
 
     @Test
