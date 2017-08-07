@@ -9,6 +9,9 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.lang.reflect.Array;
+import java.util.Arrays;
+
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
@@ -49,7 +52,7 @@ public abstract class AbstractStorageTest {
     @Test(expected = StorageException.class)
     public void saveOverflow() throws Exception {
         try {
-            for (int i = 4; i <= AbstractStorage.MAX_LENTH; i++) {
+            for (int i = 4; i <= AbstractArrayStorage.MAX_LENTH; i++) {
                 storage.save(new Resume("" + i));
             }
         } catch (StorageException e) {
@@ -62,7 +65,8 @@ public abstract class AbstractStorageTest {
     public void save() {
         storage.save(RESUME_4);
         assertSize(4);
-        assertArrayEquals(storage.getAll(), new Resume[]{RESUME_1,RESUME_2,RESUME_3,RESUME_4});
+        //массивы тут сранваить больше не можем
+        assertTrue(storage.getAllSorted().equals(Arrays.asList(RESUME_1,RESUME_2,RESUME_3,RESUME_4)));
     }
 
 
@@ -71,7 +75,7 @@ public abstract class AbstractStorageTest {
     public void update() {
         storage.update(RESUME_3);
         assertSize(3);
-        assertArrayEquals(storage.getAll(), new Resume[]{RESUME_1,RESUME_2,RESUME_3});
+        assertTrue(storage.getAllSorted().equals(Arrays.asList(RESUME_1,RESUME_2,RESUME_3)));
     }
 
     @Test
@@ -83,7 +87,7 @@ public abstract class AbstractStorageTest {
 
     @Test
     public void getAll() {
-        assertArrayEquals(storage.getAll(), new Resume[]{RESUME_1,RESUME_2,RESUME_3});
+        assertTrue(storage.getAllSorted().equals(Arrays.asList(RESUME_1,RESUME_2,RESUME_3)));
     }
 
     @Test

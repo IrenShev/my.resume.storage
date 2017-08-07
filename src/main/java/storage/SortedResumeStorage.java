@@ -4,7 +4,7 @@ import model.Resume;
 
 import java.util.Arrays;
 
-public class SortedResumeStorage extends AbstractStorage {
+public class SortedResumeStorage extends AbstractArrayStorage {
     @Override
     protected void fillDeletedEl(int index) {
         int numMoved = size - index - 1;
@@ -21,7 +21,7 @@ public class SortedResumeStorage extends AbstractStorage {
     }
 
     @Override
-    protected int getIndex(String uuid) {
+    protected Integer getSearchKey(String uuid) {
         Resume searchKey = new Resume(uuid);
         return Arrays.binarySearch(storage, 0, size, searchKey);
     }

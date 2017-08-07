@@ -2,7 +2,7 @@ package storage;
 
 import model.Resume;
 
-public class ResumeStorage extends AbstractStorage {
+public class ResumeStorage extends AbstractArrayStorage {
 
     @Override
     protected void fillDeletedEl(int index) {
@@ -18,7 +18,7 @@ public class ResumeStorage extends AbstractStorage {
 
 
     @Override
-    protected int getIndex(String uuid) {
+    protected Integer getSearchKey(String uuid) {
         for (int i = 0; i < size; i++) {
             if (storage[i].getUuid().equals(uuid)) {
                 return i;
