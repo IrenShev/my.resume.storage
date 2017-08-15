@@ -8,7 +8,7 @@ import model.Resume;
 import java.util.Arrays;
 import java.util.List;
 
-public abstract class AbstractArrayStorage extends AbstractStorage{
+public abstract class AbstractArrayStorage extends AbstractStorage<Integer>{
     public static final int MAX_LENTH = 10000;
     protected Resume[] storage = new Resume[MAX_LENTH];
     protected int size = 0;
@@ -41,35 +41,35 @@ public abstract class AbstractArrayStorage extends AbstractStorage{
     }
 
     @Override
-    protected void doUpdate(Resume r, Object index) {
-        storage[(Integer) index] = r;
+    protected void doUpdate(Resume r, Integer index) {
+        storage[index] = r;
     }
 
     @Override
-    protected boolean isExist(Object index) {
-        if ((Integer)index < 0){
+    protected boolean isExist(Integer index) {
+        if (index < 0){
             return false;
         }
         return true;
     }
 
     @Override
-    protected void doSave(Resume r, Object searchKey) {
+    protected void doSave(Resume r, Integer searchKey) {
         if (isOverflow()) {
             throw new StorageException("Storage owerflov!",r.getUuid());
         }
-            insertEl(r, (Integer) searchKey);
+            insertEl(r, searchKey);
             size++;
     }
 
     @Override
-    protected Resume doGet(Object index) {
-        return storage[(Integer) index];
+    protected Resume doGet(Integer index) {
+        return storage[index];
     }
 
     @Override
-    protected void doDelete(Object index) {
-        fillDeletedEl((Integer) index);
+    protected void doDelete(Integer index) {
+        fillDeletedEl(index);
         size--;
     }
 
