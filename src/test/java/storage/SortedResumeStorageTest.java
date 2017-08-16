@@ -5,7 +5,7 @@ import java.io.IOException;
 
 //public modificator for class important
 public class SortedResumeStorageTest extends AbstractArrayStorageTest {
-    public SortedResumeStorageTest() throws IOException, InterruptedException {
+    public SortedResumeStorageTest() {
         super(new SortedResumeStorage());
     }
 }

@@ -4,7 +4,7 @@ package storage;
 import java.io.IOException;
 
 public class ListStorageTest  extends  AbstractStorageTest{
-    public ListStorageTest() throws IOException, InterruptedException {
+    public ListStorageTest() {
         super(new ListStorage());
     }
 }

@@ -11,9 +11,6 @@ import java.util.Map;
 public class MapResumeStorage extends AbstractStorage<Resume> {
     private Map<String, Resume> map = new HashMap<>();
 
-    public MapResumeStorage() throws IOException, InterruptedException  {
-    }
-
     @Override
     protected Resume getSearchKey(String uuid) {
         return map.get(uuid);

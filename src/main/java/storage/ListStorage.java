@@ -9,9 +9,6 @@ import java.util.List;
 public class ListStorage extends AbstractStorage<Integer> {
     private List<Resume> list = new ArrayList<>();
 
-    public ListStorage() throws IOException, InterruptedException  {
-    }
-
     @Override
     protected Integer getSearchKey(String uuid) {
         for (int i = 0; i < list.size(); i++) {

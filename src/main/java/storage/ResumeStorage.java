@@ -5,10 +5,6 @@ import model.Resume;
 import java.io.IOException;
 
 public class ResumeStorage extends AbstractArrayStorage {
-
-    public ResumeStorage() throws IOException, InterruptedException  {
-    }
-
     @Override
     protected void fillDeletedEl(int index) {
         storage[index] = storage[size - 1];

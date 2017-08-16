@@ -14,10 +14,6 @@ public abstract class AbstractArrayStorage extends AbstractStorage<Integer> {
     protected Resume[] storage = new Resume[MAX_LENTH];
     protected int size = 0;
 
-    public AbstractArrayStorage() throws IOException, InterruptedException {
-    }
-
-
     private boolean isOverflow() {
         if (size == MAX_LENTH) {
             return true;

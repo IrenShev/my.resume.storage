@@ -3,7 +3,7 @@ package storage;
 import java.io.IOException;
 
 public class ManualSortedStorageTest extends  AbstractStorageTest{
-    public ManualSortedStorageTest() throws IOException, InterruptedException {
+    public ManualSortedStorageTest() {
         super(new ManualSortedStorage());
     }
 }

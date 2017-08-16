@@ -6,8 +6,6 @@ import java.io.IOException;
 import java.util.Arrays;
 
 public class SortedResumeStorage extends AbstractArrayStorage {
-    public SortedResumeStorage() throws IOException, InterruptedException  {
-    }
 
     @Override
     protected void fillDeletedEl(int index) {

@@ -11,8 +11,6 @@ import java.util.Map;
 public class MapUuidStorage extends AbstractStorage<String> {
     private Map<String, Resume> map = new HashMap<>();
 
-    public MapUuidStorage() throws IOException, InterruptedException  {
-    }
 
     @Override
     protected String getSearchKey(String uuid) {
