@@ -2,11 +2,15 @@ package storage;
 
 import model.Resume;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 public class ListStorage extends AbstractStorage<Integer> {
     private List<Resume> list = new ArrayList<>();
+
+    public ListStorage() throws IOException, InterruptedException  {
+    }
 
     @Override
     protected Integer getSearchKey(String uuid) {

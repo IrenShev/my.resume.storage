@@ -2,9 +2,13 @@ package storage;
 
 import model.Resume;
 
+import java.io.IOException;
 import java.util.Arrays;
 
 public class ManualSortedStorage extends AbstractArrayStorage {
+
+    public ManualSortedStorage() throws IOException, InterruptedException  {
+    }
 
     @Override
     protected void fillDeletedEl(int index) {

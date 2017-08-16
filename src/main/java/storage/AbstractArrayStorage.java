@@ -5,17 +5,21 @@ import exception.NotExistStorageException;
 import exception.StorageException;
 import model.Resume;
 
+import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
 
-public abstract class AbstractArrayStorage extends AbstractStorage<Integer>{
+public abstract class AbstractArrayStorage extends AbstractStorage<Integer> {
     public static final int MAX_LENTH = 10000;
     protected Resume[] storage = new Resume[MAX_LENTH];
     protected int size = 0;
 
+    public AbstractArrayStorage() throws IOException, InterruptedException {
+    }
 
-    private boolean isOverflow(){
-        if (size == MAX_LENTH){
+
+    private boolean isOverflow() {
+        if (size == MAX_LENTH) {
             return true;
         }
         return false;
@@ -47,7 +51,7 @@ public abstract class AbstractArrayStorage extends AbstractStorage<Integer>{
 
     @Override
     protected boolean isExist(Integer index) {
-        if (index < 0){
+        if (index < 0) {
             return false;
         }
         return true;
@@ -56,10 +60,10 @@ public abstract class AbstractArrayStorage extends AbstractStorage<Integer>{
     @Override
     protected void doSave(Resume r, Integer searchKey) {
         if (isOverflow()) {
-            throw new StorageException("Storage owerflov!",r.getUuid());
+            throw new StorageException("Storage owerflov!", r.getUuid());
         }
-            insertEl(r, searchKey);
-            size++;
+        insertEl(r, searchKey);
+        size++;
     }
 
     @Override

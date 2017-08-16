@@ -2,6 +2,7 @@ package storage;
 
 import model.Resume;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -9,6 +10,9 @@ import java.util.Map;
 
 public class MapUuidStorage extends AbstractStorage<String> {
     private Map<String, Resume> map = new HashMap<>();
+
+    public MapUuidStorage() throws IOException, InterruptedException  {
+    }
 
     @Override
     protected String getSearchKey(String uuid) {
