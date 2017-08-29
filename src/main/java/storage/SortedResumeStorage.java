@@ -4,8 +4,11 @@ import model.Resume;
 
 import java.io.IOException;
 import java.util.Arrays;
+import java.util.Comparator;
 
 public class SortedResumeStorage extends AbstractArrayStorage {
+
+    private static final Comparator<Resume> RESUME_COMPARATOR = (o1, o2) -> o1.getUuid().compareTo(o2.getUuid());
 
     @Override
     protected void fillDeletedEl(int index) {
@@ -24,8 +27,9 @@ public class SortedResumeStorage extends AbstractArrayStorage {
 
     @Override
     protected Integer getSearchKey(String uuid) {
-        Resume searchKey = new Resume(uuid);
-        return Arrays.binarySearch(storage, 0, size, searchKey);
+       //Resume searchKey = new Resume(uuid);// - uuid может по невнимательности пониматься как name
+        Resume searchKey = new Resume(uuid, "dummy");
+        return Arrays.binarySearch(storage, 0, size, searchKey, RESUME_COMPARATOR);
     }
 
 
