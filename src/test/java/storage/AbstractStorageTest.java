@@ -66,7 +66,7 @@ public abstract class AbstractStorageTest {
                                 new Organization.Position(2015, Month.JANUARY, "position1", "content1"))));
     }
 
-    protected AbstractStorageTest(Storage storage) {
+    public AbstractStorageTest(Storage storage) {
         this.storage = storage;
     }
 

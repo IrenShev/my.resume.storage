@@ -2,6 +2,7 @@ package storage;
 
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
+import storage.serializer.XmlStreamSerializer;
 
 
 @RunWith(Suite.class)
@@ -13,7 +14,10 @@ import org.junit.runners.Suite;
                 MapStorageTest.class,
                 MapResumeStorageTest.class,
                 ObjectStreamStorageTest.class,
-                ObjectStreamPathStorageTest.class
+                ObjectStreamPathStorageTest.class,
+                PathStorageTest.class,
+                FileStorageTest.class,
+                XmlPathStorageTest.class
 
         })
 public class AllStorageTest {
