@@ -7,6 +7,7 @@ import java.util.UUID;
 
 public class Resume implements Comparable<Resume> {
 
+    // Unique identifier
     private final String uuid;
 
     private final String fullName;
@@ -35,6 +36,14 @@ public class Resume implements Comparable<Resume> {
 
     public Section getSection(SectionType type) {
         return sections.get(type);
+    }
+
+    public void addContact(ContactType type, String value) {
+        contacts.put(type, value);
+    }
+
+    public void addSection(SectionType type, Section section) {
+        sections.put(type, section);
     }
 
     @Override
