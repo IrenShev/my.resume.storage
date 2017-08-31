@@ -18,7 +18,8 @@ import storage.serializer.XmlStreamSerializer;
                 PathStorageTest.class,
                 FileStorageTest.class,
                 XmlPathStorageTest.class,
-                JsonPathStorageTest.class
+                JsonPathStorageTest.class,
+                DataPathStorageTest.class
 
         })
 public class AllStorageTest {

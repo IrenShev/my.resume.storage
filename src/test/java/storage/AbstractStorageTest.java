@@ -66,7 +66,7 @@ public abstract class AbstractStorageTest {
                                 new Organization.Position(2015, Month.JANUARY, "position1", "content1"))));
     }
 
-    public AbstractStorageTest(Storage storage) {
+    protected AbstractStorageTest(Storage storage) {
         this.storage = storage;
     }
 
@@ -151,5 +151,4 @@ public abstract class AbstractStorageTest {
     private void assertSize(int size) {
         assertEquals(size, storage.size());
     }
-
 }

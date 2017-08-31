@@ -8,14 +8,16 @@ import java.util.Objects;
 @XmlAccessorType(XmlAccessType.FIELD)
 public class OrganizationSection extends Section {
     private static final long serialVersionUID = 1L;
-    private List<Organization> organizations;
 
-    public OrganizationSection() {
-    }
+    private List<Organization> organizations;
 
     public OrganizationSection(Organization... organizations) {
         this(Arrays.asList(organizations));
     }
+
+    public OrganizationSection() {
+    }
+
 
     public OrganizationSection(List<Organization> organizations) {
         Objects.requireNonNull(organizations, "organizations must not be null");
