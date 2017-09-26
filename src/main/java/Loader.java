@@ -1,7 +1,6 @@
+import config.Config;
 import model.Resume;
 import storage.ManualSortedStorage;
-import storage.ResumeStorage;
-import storage.SortedResumeStorage;
 import storage.Storage;
 
 import java.io.BufferedReader;
@@ -17,6 +16,8 @@ public class Loader {
 
 
     public static void main(String[] args) throws IOException {
+
+        System.out.println(Config.get().getStorageDir());
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         Resume r;
         while (true) {
@@ -87,4 +88,6 @@ public class Loader {
         }
         System.out.println("----command done at " + (System.nanoTime() - TIMEOUT) + " Nanos----");
     }
+
+
 }

@@ -7,7 +7,6 @@ import java.io.IOException;
 public class FilesRecursion {
     public static void main(String[] args) {
         String filePath = "./src/main/java/Loader.java";
-
         File file = new File(filePath);
         try {
             System.out.println(file.getCanonicalPath());

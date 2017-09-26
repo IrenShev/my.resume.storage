@@ -1,19 +1,19 @@
 package storage;
 
+
+import config.Config;
 import exception.ExistStorageException;
 import exception.NotExistStorageException;
-import exception.StorageException;
 import model.*;
 
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
 import java.io.File;
-import java.lang.reflect.Array;
 import java.time.Month;
 import java.util.Arrays;
 import java.util.List;
+
 
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
@@ -21,9 +21,12 @@ import static org.junit.Assert.assertTrue;
 
 
 public abstract class AbstractStorageTest {
-    //protected static final File STORAGE_DIR = new File("C:\\1");
-    protected static final File STORAGE_DIR = new File("C:\\Users\\Stas\\IdeaProjects\\my.resume.storage\\src\\main\\resources\\storage");
+    //protected static final File STORAGE_DIR = new File("C:\\Users\\Stas\\IdeaProjects\\my.resume.storage\\src\\main\\resources\\storage");
+    //protected static final File STORAGE_DIR = new File("C:/Users/Stas/IdeaProjects/my.resume.storage/src/main/resources/storage");
+    protected static final File STORAGE_DIR = Config.get().getStorageDir();
+
     protected Storage storage;
+
 
     private static final String UUID_1 = "uuid1";
     private static final String UUID_2 = "uuid2";
