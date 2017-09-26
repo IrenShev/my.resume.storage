@@ -9,7 +9,7 @@ import java.sql.*;
 import java.util.List;
 
 public class SqlStorage implements Storage {
-    public final ConnectionFactory connectionFactory;
+    public final ConnectionFactory connectionFactory; //try
 
     public SqlStorage(String dbUrl, String dbUser, String dbPassword) {
         this.connectionFactory = new ConnectionFactory() {
