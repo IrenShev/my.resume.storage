@@ -22,9 +22,7 @@ import static org.junit.Assert.assertTrue;
 
 
 public abstract class AbstractStorageTest {
-    //protected static final File STORAGE_DIR = new File("C:\\Users\\Stas\\IdeaProjects\\my.resume.storage\\src\\main\\resources\\storage");
-    //protected static final File STORAGE_DIR = new File("C:/Users/Stas/IdeaProjects/my.resume.storage/src/main/resources/storage");
-    protected static final File STORAGE_DIR = Config.get().getStorageDir();
+   protected static final File STORAGE_DIR = Config.get().getStorageDir();
 
     protected Storage storage;
 
@@ -50,9 +48,9 @@ public abstract class AbstractStorageTest {
         R4 = new Resume(UUID_4, "Name4");
 
 //          }
-        // на данный момент сравение будет происходить по правилам equals  (Resume) поэтому коментируем секции и контакты
-//        R1.addContact(ContactType.MAIL, "mail1@ya.ru");
-//        R1.addContact(ContactType.PHONE, "11111");
+
+        R1.addContact(ContactType.MAIL, "mail1@ya.ru");
+        R1.addContact(ContactType.PHONE, "11111");
 //        R1.addSection(SectionType.OBJECTIVE, new TextSection("Objective1"));
 //        R1.addSection(SectionType.PERSONAL, new TextSection("Personal data"));
 //        R1.addSection(SectionType.ACHIEVEMENT, new ListSection("Achivment11", "Achivment12", "Achivment13"));
