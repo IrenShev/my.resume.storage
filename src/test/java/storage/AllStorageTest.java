@@ -19,7 +19,8 @@ import storage.serializer.XmlStreamSerializer;
                 FileStorageTest.class,
                 XmlPathStorageTest.class,
                 JsonPathStorageTest.class,
-                DataPathStorageTest.class
+                DataPathStorageTest.class,
+                SqlStorageTest.class
 
         })
 public class AllStorageTest {
